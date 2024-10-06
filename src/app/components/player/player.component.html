@@ -1,0 +1,13 @@
+<div cdkDropList class="flex column list-wrapper" (cdkDropListDropped)="drop($event)">
+	@for (player of playerList; track player) {
+		<div class="flex column justify-space-between h-40px" cdkDrag>
+			<div class="font-white flex justify-space-between">
+				<span>{{ player }}</span>
+				<mat-icon>menu</mat-icon>
+			</div>
+			<mat-divider></mat-divider>
+		</div>
+	} @empty {
+		<div class="flex justify-center align-center font-white empty-list">Combatentes aparecerão aqui</div>
+	}
+</div>
