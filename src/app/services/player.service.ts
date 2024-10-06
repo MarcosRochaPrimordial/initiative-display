@@ -5,6 +5,6 @@ import { Injectable, signal, WritableSignal } from '@angular/core';
 })
 export class PlayerService {
 
-  players: WritableSignal<Array<string>> = signal([]);
+  players: WritableSignal<Array<{ name: string, onRound: boolean }>> = signal([]);
 
 }

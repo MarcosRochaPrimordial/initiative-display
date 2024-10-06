@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { PlayerService } from '../../services/player.service';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
@@ -13,10 +13,9 @@ import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-
 })
 export class PlayerComponent {
   playerService = inject(PlayerService);
+  playerOnRound = signal('');
 
-  get playerList() {
-    return this.playerService.players();
-  }
+  playerList = this.playerService.players();
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.playerList, event.previousIndex, event.currentIndex);

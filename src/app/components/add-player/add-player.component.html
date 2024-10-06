@@ -1,10 +1,10 @@
 <div class="flex justify-space-between align-center">
 	<mat-form-field appearance="outline">
-		<mat-label>Jogador</mat-label>
-		<input matInput type="text" [(ngModel)]="player">
+		<mat-label>Subject's name</mat-label>
+		<input matInput type="text" [(ngModel)]="player" (keyup)="onKeyUp($event.keyCode)">
 	</mat-form-field>
 
-	<button mat-mini-fab color="primary" (click)="addPlayer()">
+	<button mat-fab color="primary" (click)="addPlayer()" [disabled]="player() === ''">
 		<mat-icon>add</mat-icon>
 	</button>
 </div>

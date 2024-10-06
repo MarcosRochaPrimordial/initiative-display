@@ -17,13 +17,21 @@ export class AddPlayerComponent {
   playerService = inject(PlayerService);
 
   addPlayer() {
+    if (this.player() === '') return false;
+    
     this.playerService
       .players
       .update(playerList => {
-        playerList.push(this.player());
+        playerList.push({ name: this.player(), onRound: this.playerService.players().length === 0 });
         return playerList;
       });
     
     this.player.set('');
+  }
+
+  onKeyUp(pressedKeyCode: number) {
+    if (pressedKeyCode === 13) {
+      this.addPlayer();
+    }
   }
 }
