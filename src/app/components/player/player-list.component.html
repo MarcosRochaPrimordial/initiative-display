@@ -1,0 +1,12 @@
+<mat-list cdkDropList class="flex column list-wrapper" (cdkDropListDropped)="drop($event)">
+  @for (player of playerList; track player) {
+  <mat-list-item class="flex column justify-space-between h-40px" [class.on-round]="player.onRound" cdkDrag>
+    <div class="font-white player-item-wrapper flex justify-space-between">
+      <span>{{ player.name }}</span>
+      <mat-icon cdkDragHandle class="mover">menu</mat-icon>
+    </div>
+  </mat-list-item>
+  } @empty {
+  <div class="flex justify-center align-center font-white empty-list">Subject's going to appear here</div>
+  }
+</mat-list>

@@ -12,7 +12,7 @@ export class ActionsComponent {
 
   playerService = inject(PlayerService);
 
-  private players = this.playerService.players();
+  players = this.playerService.players();
 
   nextSubject() {
     this.players

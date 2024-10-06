@@ -1,5 +1,13 @@
 .wrapper {
-    min-width: 390px;
+    width: 390px;
     gap: 20px;
     padding: 15px;
+    position: relative;
+
+    .action-buttons {
+        position: sticky;
+        bottom: 0;
+        height: 65px;
+        background-color: #101414;
+    }
 }

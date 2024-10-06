@@ -1,5 +1,5 @@
-<div class="flex justify-space-between align-center">
-	<mat-form-field appearance="outline">
+<div class="flex align-center form-wrapper">
+	<mat-form-field appearance="outline" class="flex-1">
 		<mat-label>Subject's name</mat-label>
 		<input matInput type="text" [(ngModel)]="player" (keyup)="onKeyUp($event.keyCode)">
 	</mat-form-field>

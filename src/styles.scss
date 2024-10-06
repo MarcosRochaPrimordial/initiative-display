@@ -30,6 +30,10 @@ body {
 .flex {
 	display: flex;
 
+	.flex-1 {
+		flex: 1;
+	}
+
 	&.column {
 		flex-direction: column;
 	}

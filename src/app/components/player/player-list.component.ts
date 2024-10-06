@@ -5,13 +5,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
-  selector: 'app-player',
+  selector: 'app-player-list',
   standalone: true,
   imports: [MatDividerModule, MatIconModule, DragDropModule],
-  templateUrl: './player.component.html',
-  styleUrl: './player.component.scss'
+  templateUrl: './player-list.component.html',
+  styleUrl: './player-list.component.scss'
 })
-export class PlayerComponent {
+export class PlayerListComponent {
   playerService = inject(PlayerService);
   playerOnRound = signal('');
 
