@@ -1,9 +1,12 @@
 <mat-list cdkDropList class="flex column list-wrapper" (cdkDropListDropped)="drop($event)">
-  @for (player of playerList; track player) {
+  @for (player of playerList; track player; let i = $index) {
   <mat-list-item class="flex column justify-space-between h-40px" [class.on-round]="player.onRound" cdkDrag>
     <div class="font-white player-item-wrapper flex justify-space-between">
       <span>{{ player.name }}</span>
-      <mat-icon cdkDragHandle class="mover">menu</mat-icon>
+      <div class="flex item-actions">
+        <mat-icon (click)="deleteSubject($index)" class="pointer">delete</mat-icon>
+        <mat-icon cdkDragHandle class="mover">menu</mat-icon>
+      </div>
     </div>
   </mat-list-item>
   } @empty {

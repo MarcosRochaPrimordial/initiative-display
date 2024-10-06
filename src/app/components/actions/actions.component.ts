@@ -15,7 +15,7 @@ export class ActionsComponent {
   players = this.playerService.players();
 
   nextSubject() {
-    this.players
+    const isThereNotOnRoundPlayer = this.players
       .every((player, index) => {
         if (!player.onRound) return true;
 
@@ -29,5 +29,9 @@ export class ActionsComponent {
         this.players[(index + 1)].onRound = true;
         return false;
       });
+
+    if (isThereNotOnRoundPlayer) {
+      this.players[0].onRound = true;
+    }
   }
 }

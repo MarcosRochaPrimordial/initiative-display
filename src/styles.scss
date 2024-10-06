@@ -17,6 +17,10 @@ body {
 	cursor: move;
 }
 
+.pointer {
+	cursor: pointer;
+}
+
 @for $i from 1 through 100 {
 	.h-#{$i}px {
 		height: $i * 1px;

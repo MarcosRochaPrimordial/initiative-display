@@ -7,6 +7,10 @@
 
     .player-item-wrapper {
         padding: 8px;
+
+        .item-actions {
+            gap: 15px;
+        }
     }
 
     .empty-list {

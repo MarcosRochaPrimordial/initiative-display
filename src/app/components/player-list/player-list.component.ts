@@ -20,4 +20,8 @@ export class PlayerListComponent {
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.playerList, event.previousIndex, event.currentIndex);
   }
+
+  deleteSubject(index: number) {
+    this.playerList.splice(index, 1);
+  }
 }
