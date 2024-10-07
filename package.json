@@ -1,14 +1,11 @@
 {
   "name": "initiative-display",
   "version": "0.0.0",
+  "main": "app.js",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "build:prod": "ng build --configuration production",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "deploy": "npm run build:prod && firebase deploy --only hosting"
+    "build": "ng build --configuration production && electron .",
+    "pack": "ng build --configuration production && electron-builder --win portable"
   },
   "private": true,
   "dependencies": {
@@ -31,6 +28,8 @@
     "@angular/cli": "^18.2.7",
     "@angular/compiler-cli": "^18.2.0",
     "@types/jasmine": "~5.1.0",
+    "electron": "^32.1.2",
+    "electron-builder": "^25.1.7",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -38,5 +37,15 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.5.2"
+  },
+  "build": {
+    "win": {
+      "target": [
+        "portable"
+      ]
+    },
+    "portable": {
+      "artifactName": "initiative-display.exe"
+    }
   }
 }

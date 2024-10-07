@@ -2,6 +2,7 @@
 
 # Compiled output
 /dist
+/out
 /tmp
 /out-tsc
 /bazel-out
@@ -41,5 +42,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Firebase
-.firebase
+# VSCode
+.vscode
