@@ -29,6 +29,14 @@ body {
 	.w-#{$i} {
 		width: $i * 1%;
 	}
+
+	.gap-#{$i} {
+		gap: $i * 1px;
+	}
+
+	.mleft-#{$i} {
+		margin-left: $i * 1px;
+	}
 }
 
 .flex {
@@ -48,6 +56,10 @@ body {
 
 	&.justify-center {
 		justify-content: center;
+	}
+
+	&.justify-start {
+		justify-content: start;
 	}
 
 	&.align-center {

@@ -1,11 +1,14 @@
 <div class="flex justify-center">
-	<div class="wrapper flex column">
+	<div class="wrapper gap-20 flex column">
+		<app-header></app-header>
 		<app-add-player></app-add-player>
 		<app-player-list></app-player-list>
-		<div class="action-buttons flex justify-center align-center">
-			<div class="w-100">
-				<app-actions></app-actions>
+		@if(playerService.rollModeOn()) {
+			<div class="action-buttons flex justify-center align-center">
+				<div class="w-100">
+					<app-actions></app-actions>
+				</div>
 			</div>
-		</div>
+		}
 	</div>
 </div>

@@ -1,12 +1,29 @@
-<mat-list cdkDropList class="flex column list-wrapper" (cdkDropListDropped)="drop($event)">
-  @for (player of playerList; track player; let i = $index) {
-  <mat-list-item class="flex column justify-space-between h-40px" [class.on-round]="player.onRound" cdkDrag>
-    <div class="font-white player-item-wrapper flex justify-space-between">
-      <span>{{ player.name }}</span>
-      <div class="flex item-actions">
-        <mat-icon (click)="deleteSubject($index)" class="pointer">delete</mat-icon>
-        <mat-icon cdkDragHandle class="mover">menu</mat-icon>
+<mat-list cdkDropList class="flex column" (cdkDropListDropped)="drop($event)">
+  @for (player of playerService.players(); track $index; let i = $index) {
+  <mat-list-item class="flex align-center mover list-item-wrapper h-60px" [class.on-round]="player.onRound" cdkDrag
+    (click)="selectTurn($index)">
+    <div class="font-white player-item-wrapper flex justify-space-between align-center w-100">
+      <div class="flex align-center">
+        @if(playerService.rollModeOn()) {
+          <mat-menu #menu="matMenu">
+            @if(playerService.rollModeOn()) {
+            <button mat-menu-item (click)="rollInitiative($index)" [disabled]="player.initiative === 0">Roll</button>
+            }
+            <button mat-menu-item (click)="deleteSubject($index)">Remove</button>
+          </mat-menu>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        }
+        <span class="mleft-15">{{ player.name }}</span>
       </div>
+      @if(playerService.rollModeOn()) {
+      <app-bonus-initiative-input [player]="player"></app-bonus-initiative-input>
+      } @else {
+      <button mat-icon-button (click)="deleteSubject($index)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      }
     </div>
   </mat-list-item>
   } @empty {

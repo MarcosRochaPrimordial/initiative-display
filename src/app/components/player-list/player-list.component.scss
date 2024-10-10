@@ -1,21 +1,18 @@
-.list-wrapper {
-    gap: 15px;
+.list-item-wrapper {
+    border-radius: 6px;
+    margin: 5px 0;
 
-    .on-round {
+    &.on-round {
         background-color: #ffabf31a;
     }
 
     .player-item-wrapper {
-        padding: 8px;
-
-        .item-actions {
-            gap: 15px;
-        }
+        padding: 8px 5px;
     }
+}
 
-    .empty-list {
-        height: 300px;
-    }
+.empty-list {
+    height: 300px;
 }
 
 .cdk-drag-preview {

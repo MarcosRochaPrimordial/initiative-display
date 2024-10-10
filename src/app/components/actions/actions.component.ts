@@ -12,26 +12,7 @@ export class ActionsComponent {
 
   playerService = inject(PlayerService);
 
-  players = this.playerService.players();
-
-  nextSubject() {
-    const isThereNotOnRoundPlayer = this.players
-      .every((player, index) => {
-        if (!player.onRound) return true;
-
-        if (!this.players[(index + 1)]) {
-          player.onRound = false;
-          this.players[0].onRound = true;
-          return false;
-        }
-
-        player.onRound = false;
-        this.players[(index + 1)].onRound = true;
-        return false;
-      });
-
-    if (isThereNotOnRoundPlayer) {
-      this.players[0].onRound = true;
-    }
+  rollDices() {
+    this.playerService.rollDices();
   }
 }

@@ -11,7 +11,6 @@ import { PlayerService } from '../../services/player.service';
   standalone: true,
   imports: [MatInputModule, MatFormFieldModule, FormsModule, MatIconModule, MatButtonModule],
   templateUrl: './add-player.component.html',
-  styleUrl: './add-player.component.scss',
 })
 export class AddPlayerComponent {
   player = signal('');
@@ -23,7 +22,12 @@ export class AddPlayerComponent {
     this.playerService
       .players
       .update(playerList => {
-        playerList.push({ name: this.player(), onRound: this.playerService.players().length === 0 });
+        playerList.push({
+          name: this.player(),
+          initiativeBonus: 0,
+          initiative: 0,
+          onRound: this.playerService.players().length === 0,
+        });
         return playerList;
       });
     

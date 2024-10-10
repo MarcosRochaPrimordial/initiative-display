@@ -1,0 +1,11 @@
+<div class="flex align-center">
+    <button mat-icon-button (click)="incrementBonus(-1, player); $event.stopPropagation()">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+    <span class="initiative-input">
+        {{ player.initiativeBonus }}
+    </span>
+    <button mat-icon-button (click)="incrementBonus(1, player); $event.stopPropagation()">
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+</div>
