@@ -1,13 +1,28 @@
+@import './../../../color-variables.scss';
+
 .list-item-wrapper {
     border-radius: 6px;
     margin: 5px 0;
 
     &.on-round {
-        background-color: #ffabf31a;
+        background-color: $primary-color;
     }
 
     .player-item-wrapper {
         padding: 8px 5px;
+
+        .player-initiative-text {
+            font-size: 20pt;
+        }
+
+        .player-initiative-sub-text {
+            font-size: 9pt;
+            transform: translateY(-6px);
+        }
+
+        .player-indicative {
+            font-size: 14pt;
+        }
     }
 }
 

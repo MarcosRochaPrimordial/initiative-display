@@ -3,4 +3,5 @@ export interface Player {
     onRound: boolean;
     initiativeBonus: number;
     initiative: number;
+    selected?: boolean;
 }

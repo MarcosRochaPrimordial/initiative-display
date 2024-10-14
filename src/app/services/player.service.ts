@@ -8,6 +8,7 @@ export class PlayerService {
 
   players: WritableSignal<Array<Player>> = signal([]);
   rollModeOn = signal(false);
+  deleteModeOn = signal(false);
 
   rollDices() {
     this.players.update(players =>
@@ -26,15 +27,43 @@ export class PlayerService {
           return this.applyInitiative(player);
         })
         .sort(this.sortPerInitiative));
+  }
 
-    console.log(this.players());
+  putPlayerOnRound(index: number) {
+    this.players().forEach(player => player.onRound = false);
+    this.players().at(index)!.onRound = true;
+  }
+
+  selectPlayer(index: number) {
+    this.players().forEach((player, indexPlayer) => {
+      if (indexPlayer !== index) {
+        return;
+      }
+
+      player.selected = !player.selected;
+    });
+  }
+
+  removeSelectedPlayers() {
+    this.players.update(players => players.filter(player => !player.selected));
+    this.players.update(players => {
+      if (!!players[0]) {
+        players[0].onRound = true;
+      }
+
+      return players;
+    });
   }
 
   private applyInitiative(player: Player) {
     return {
       ...player,
-      initiative: Math.floor((Math.random() * 20)),
+      initiative: this.runRandomDice(),
     };
+  }
+
+  private runRandomDice() {
+    return Math.floor((Math.random() * 20) + 1);
   }
 
   private sortPerInitiative(playerOne: Player, playerTwo: Player) {

@@ -1,3 +1,5 @@
+@import './../color-variables.scss';
+
 .wrapper {
     width: 390px;
     padding: 15px;
@@ -7,6 +9,6 @@
         position: sticky;
         bottom: 0;
         height: 65px;
-        background-color: #101414;
+        background-color: $dark;
     }
 }

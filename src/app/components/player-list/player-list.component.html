@@ -5,24 +5,29 @@
     <div class="font-white player-item-wrapper flex justify-space-between align-center w-100">
       <div class="flex align-center">
         @if(playerService.rollModeOn()) {
-          <mat-menu #menu="matMenu">
-            @if(playerService.rollModeOn()) {
-            <button mat-menu-item (click)="rollInitiative($index)" [disabled]="player.initiative === 0">Roll</button>
-            }
-            <button mat-menu-item (click)="deleteSubject($index)">Remove</button>
-          </mat-menu>
-          <button mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon>more_vert</mat-icon>
-          </button>
+        <div class="flex align-center" [matTooltip]="(+player.initiative + +player.initiativeBonus).toString()">
+          <div class="flex justify-center w-66px gap-3">
+            <span class="player-initiative-text">{{ player.initiative }}</span>
+            <span class="player-initiative-sub-text"> {{ player.initiativeBonus >= 0 ? '+' : '' }}{{ player.initiativeBonus }}</span>
+          </div>
+          <span class="player-initiative-text">|</span>
+        </div>
         }
-        <span class="mleft-15">{{ player.name }}</span>
+        <span class="mleft-15 player-indicative">{{ player.name }}</span>
       </div>
-      @if(playerService.rollModeOn()) {
-      <app-bonus-initiative-input [player]="player"></app-bonus-initiative-input>
-      } @else {
-      <button mat-icon-button (click)="deleteSubject($index)">
-        <mat-icon>delete</mat-icon>
-      </button>
+      @if(playerService.rollModeOn() && !playerService.deleteModeOn()) {
+      <div class="flex align-center">
+        <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <app-bonus-initiative-input [player]="player"></app-bonus-initiative-input>
+          <button mat-menu-item (click)="rollInitiative($index)" [disabled]="player.initiative === 0">Roll self</button>
+        </mat-menu>
+      </div>
+      }
+      @if(playerService.deleteModeOn()) {
+        <mat-checkbox (click)="selectPlayer($index); $event.stopPropagation()"></mat-checkbox>
       }
     </div>
   </mat-list-item>

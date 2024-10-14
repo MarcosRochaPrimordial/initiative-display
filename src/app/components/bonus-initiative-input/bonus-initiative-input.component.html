@@ -1,11 +1,13 @@
-<div class="flex align-center">
-    <button mat-icon-button (click)="incrementBonus(-1, player); $event.stopPropagation()">
-        <mat-icon>chevron_left</mat-icon>
-    </button>
-    <span class="initiative-input">
-        {{ player.initiativeBonus }}
-    </span>
-    <button mat-icon-button (click)="incrementBonus(1, player); $event.stopPropagation()">
-        <mat-icon>chevron_right</mat-icon>
-    </button>
+<div class="flex column bonus-input-wrapper">
+    <span class="font-white">Bonus</span>
+    <div class="flex align-center">
+        <button mat-icon-button (click)="incrementBonus(-1, player); $event.stopPropagation()">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+        <input class="initiative-input font-white" [(ngModel)]="player.initiativeBonus"
+            (click)="$event.stopPropagation()">
+        <button mat-icon-button (click)="incrementBonus(1, player); $event.stopPropagation()">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+    </div>
 </div>

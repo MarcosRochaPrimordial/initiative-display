@@ -1,3 +1,5 @@
+@import './color-variables.scss';
+
 html,
 body {
 	height: 100%;
@@ -6,7 +8,7 @@ body {
 body {
 	margin: 0;
 	font-family: Roboto, "Helvetica Neue", sans-serif;
-	background-color: #101414;
+	background-color: $dark;
 }
 
 .font-white {
@@ -24,6 +26,10 @@ body {
 @for $i from 1 through 100 {
 	.h-#{$i}px {
 		height: $i * 1px;
+	}
+
+	.w-#{$i}px {
+		min-width: $i * 1px;
 	}
 
 	.w-#{$i} {
