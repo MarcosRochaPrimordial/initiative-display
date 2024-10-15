@@ -1,36 +1,6 @@
 <mat-list cdkDropList class="flex column" (cdkDropListDropped)="drop($event)">
   @for (player of playerService.players(); track $index; let i = $index) {
-  <mat-list-item class="flex align-center mover list-item-wrapper h-60px" [class.on-round]="player.onRound" cdkDrag
-    (click)="selectTurn($index)">
-    <div class="font-white player-item-wrapper flex justify-space-between align-center w-100">
-      <div class="flex align-center">
-        @if(playerService.rollModeOn()) {
-        <div class="flex align-center" [matTooltip]="(+player.initiative + +player.initiativeBonus).toString()">
-          <div class="flex justify-center w-66px gap-3">
-            <span class="player-initiative-text">{{ player.initiative }}</span>
-            <span class="player-initiative-sub-text"> {{ player.initiativeBonus >= 0 ? '+' : '' }}{{ player.initiativeBonus }}</span>
-          </div>
-          <span class="player-initiative-text">|</span>
-        </div>
-        }
-        <span class="mleft-15 player-indicative">{{ player.name }}</span>
-      </div>
-      @if(playerService.rollModeOn() && !playerService.deleteModeOn()) {
-      <div class="flex align-center">
-        <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-          <app-bonus-initiative-input [player]="player"></app-bonus-initiative-input>
-          <button mat-menu-item (click)="rollInitiative($index)" [disabled]="player.initiative === 0">Roll self</button>
-        </mat-menu>
-      </div>
-      }
-      @if(playerService.deleteModeOn()) {
-        <mat-checkbox (click)="selectPlayer($index); $event.stopPropagation()"></mat-checkbox>
-      }
-    </div>
-  </mat-list-item>
+  <app-player-item [player]="player" [indexPlayer]="$index"></app-player-item>
   } @empty {
   <div class="flex justify-center align-center font-white empty-list">Subject's going to appear here</div>
   }

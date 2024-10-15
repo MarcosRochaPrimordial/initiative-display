@@ -1,10 +1,10 @@
 <div class="flex column bonus-input-wrapper">
     <span class="font-white">Bonus</span>
-    <div class="flex align-center">
+    <div class="flex justify-space-between">
         <button mat-icon-button (click)="incrementBonus(-1, player); $event.stopPropagation()">
             <mat-icon>chevron_left</mat-icon>
         </button>
-        <input class="initiative-input font-white" [(ngModel)]="player.initiativeBonus"
+        <input class="initiative-input font-white" [(ngModel)]="player.initiativeBonus" mask="99"
             (click)="$event.stopPropagation()">
         <button mat-icon-button (click)="incrementBonus(1, player); $event.stopPropagation()">
             <mat-icon>chevron_right</mat-icon>

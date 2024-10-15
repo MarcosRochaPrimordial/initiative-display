@@ -16,11 +16,11 @@ body {
 }
 
 .mover {
-	cursor: move;
+	cursor: move !important;
 }
 
 .pointer {
-	cursor: pointer;
+	cursor: pointer !important;
 }
 
 @for $i from 1 through 100 {

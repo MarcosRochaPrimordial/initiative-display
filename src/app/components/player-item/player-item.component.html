@@ -1,0 +1,40 @@
+<div class="flex align-center list-item-wrapper h-60px" [class.on-round]="player.onRound" [class.mover]="!playerService.rollModeOn()" cdkDrag
+  (click)="selectTurn(indexPlayer)">
+  <div class="font-white player-item-wrapper flex justify-space-between align-center w-100">
+    <div class="flex align-center">
+      @if(playerService.rollModeOn()) {
+      <div class="flex align-center" [matTooltip]="(+player.initiative + +player.initiativeBonus).toString()">
+        <div class="flex justify-center w-66px gap-3">
+          <span class="player-initiative-text">{{ player.initiative }}</span>
+          <span class="player-initiative-sub-text"> {{ player.initiativeBonus >= 0 ? '+' : '' }}{{
+            player.initiativeBonus }}</span>
+        </div>
+        <span class="player-initiative-text">|</span>
+      </div>
+      }
+      <span class="mleft-15 player-indicative">{{ player.name }}</span>
+    </div>
+    @if(playerService.rollModeOn() && !playerService.deleteModeOn()) {
+    <div class="flex align-center">
+      <button class="mover sort-icon" cdkDragHandle mat-icon-button (click)="openBottomSheet(); $event.stopPropagation()">
+        <mat-icon>sort</mat-icon>
+      </button>
+    </div>
+    }
+    @if(playerService.deleteModeOn()) {
+    <mat-checkbox (click)="selectPlayer(indexPlayer); $event.stopPropagation()"></mat-checkbox>
+    }
+  </div>
+</div>
+
+<ng-template #bottomSheetTemplate>
+  <div class="flex column justify-space-between gap-20">
+    <app-bonus-initiative-input [player]="player"></app-bonus-initiative-input>
+    <mat-divider></mat-divider>
+    <div class="flex column gap-5">
+      <span>Roll</span>
+      <button mat-flat-button class="w-100" color="primary" (click)="rollInitiative(indexPlayer)"
+        [disabled]="player.initiative === 0 || !bottomSheetRef">Roll self</button>
+    </div>
+  </div>
+</ng-template>
