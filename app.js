@@ -7,17 +7,17 @@ function createWindow() {
 		width: 390,
 		height: 844,
 		webPreferences: {
-			nodeIntegration: true
+			nodeIntegration: true,
 		},
 		autoHideMenuBar: true,
 	});
 
 	mainWindow.loadURL(
 		url.format({
-			pathname: path.join(__dirname, `out/browser/index.html`),
+			pathname: path.join(__dirname, `dist/browser/index.html`),
 			protocol: "file:",
 			slashes: true,
-		})
+		}),
 	);
 
 	mainWindow.on('closed', function () {

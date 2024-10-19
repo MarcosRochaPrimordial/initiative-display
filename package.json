@@ -40,6 +40,16 @@
     "typescript": "~5.5.2"
   },
   "build": {
+    "appId": "initiative-display",
+    "files": [
+      "./app.js",
+      "./dist/**/*",
+      "!node_modules"
+    ],
+    "includeSubNodeModules": false,
+    "directories": {
+      "output": "out"
+    },
     "win": {
       "target": [
         "portable"
