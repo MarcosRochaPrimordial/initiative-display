@@ -3,12 +3,8 @@
 		<app-add-player></app-add-player>
 		<app-general-actions></app-general-actions>
 		<app-player-list></app-player-list>
-		@if(playerService.rollModeOn()) {
-			<div class="action-buttons flex justify-center align-center">
-				<div class="w-100">
-					<app-actions></app-actions>
-				</div>
-			</div>
-		}
+		<div class="action-buttons">
+			<app-actions></app-actions>
+		</div>
 	</div>
 </div>

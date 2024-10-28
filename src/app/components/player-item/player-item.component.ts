@@ -29,8 +29,8 @@ export class PlayerItemComponent {
   playerService = inject(PlayerService);
   private bottomSheet = inject(MatBottomSheet);
 
-  selectTurn(index: number) {
-    this.playerService.putPlayerOnRound(index);
+  selectTurn() {
+    this.playerService.putPlayerOnRound(this.indexPlayer);
   }
 
   openBottomSheet() {
@@ -45,6 +45,15 @@ export class PlayerItemComponent {
     this.playerService.rollInitiative(index);
     this.bottomSheetRef.dismiss();
     this.bottomSheetRef = null;
+  }
+
+  onItemClick() {
+    if (!this.playerService.rollModeOn()) {
+      this.selectTurn();
+      return;
+    }
+
+    this.openBottomSheet();
   }
 
 }

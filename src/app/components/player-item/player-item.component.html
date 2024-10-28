@@ -1,5 +1,5 @@
-<div class="flex align-center list-item-wrapper h-60px" [class.on-round]="player.onRound" [class.mover]="!playerService.rollModeOn()" cdkDrag
-  (click)="selectTurn(indexPlayer)">
+<div class="flex align-center list-item-wrapper h-60px" [class.on-round]="player.onRound" cdkDrag
+  (click)="onItemClick()">
   <div class="font-white player-item-wrapper flex justify-space-between align-center w-100">
     <div class="flex align-center">
       @if(playerService.rollModeOn()) {
@@ -14,13 +14,13 @@
       }
       <span class="mleft-15 player-indicative">{{ player.name }}</span>
     </div>
-    @if(playerService.rollModeOn() && !playerService.deleteModeOn()) {
-    <div class="flex align-center">
-      <button class="mover sort-icon" cdkDragHandle mat-icon-button (click)="openBottomSheet(); $event.stopPropagation()">
-        <mat-icon>sort</mat-icon>
+    <div class="flex align-center" cdkDragHandle>
+      @if(!playerService.deleteModeOn()) {
+      <button class="mover sort-icon" mat-icon-button (click)="$event.stopPropagation()">
+        <mat-icon>drag_indicator</mat-icon>
       </button>
+      }
     </div>
-    }
     @if(playerService.deleteModeOn()) {
     <mat-checkbox (click)="selectPlayer(indexPlayer); $event.stopPropagation()"></mat-checkbox>
     }

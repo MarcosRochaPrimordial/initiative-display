@@ -1,12 +1,12 @@
 <div class="flex justify-space-between align-center">
   <mat-slide-toggle color="primary" [(ngModel)]="playerService.rollModeOn">Roll mode</mat-slide-toggle>
-  @if(!playerService.deleteModeOn()) {
   <button mat-icon-button (click)="turnDeleteMode()">
-    <mat-icon class="margin-zero">checklist_rtl</mat-icon>
+    <mat-icon class="margin-zero">
+      @if(!playerService.deleteModeOn()) {
+      checklist_rtl
+      } @else {
+      playlist_remove
+      }
+    </mat-icon>
   </button>
-  } @else {
-  <button mat-icon-button (click)="removeSelectedPlayers(); turnDeleteMode()">
-    <mat-icon class="margin-zero">playlist_remove</mat-icon>
-  </button>
-  }
 </div>

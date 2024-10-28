@@ -1,0 +1,10 @@
+@if(buttonType === 'flat') {
+<button mat-flat-button [color]="buttonColor" [class]="buttonClasses" (click)="onClick($event)">
+    {{ buttonText }}
+</button>
+}
+@if (buttonType === 'stroked') {
+<button mat-stroked-button [color]="buttonColor" [class]="buttonClasses" (click)="onClick($event)">
+    {{ buttonText }}
+</button>
+}

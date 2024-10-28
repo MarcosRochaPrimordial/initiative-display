@@ -15,10 +15,6 @@ export class GeneralActionsComponent {
   playerService = inject(PlayerService);
 
   turnDeleteMode() {
-    this.playerService.deleteModeOn.update(deleteModeOn => !deleteModeOn);
-  }
-
-  removeSelectedPlayers() {
-    this.playerService.removeSelectedPlayers();
+    this.playerService.turnDeleteMode();
   }
 }
