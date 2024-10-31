@@ -3,5 +3,8 @@
   <app-player-item [player]="player" [indexPlayer]="$index"></app-player-item>
   } @empty {
   <div class="flex justify-center align-center font-white empty-list">Subject's going to appear here</div>
+  @if (standaloneMode.canInstall()) {
+  <button mat-flat-button (click)="standaloneMode.addToHomeScreen()">Add this app to your home screen</button>
+  }
   }
 </mat-list>
