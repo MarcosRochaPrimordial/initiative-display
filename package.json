@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "start": "ng serve",
-    "build": "ng build --configuration production"
+    "build": "ng build --configuration production",
+    "lan": "npm run build && npx http-server -p 4200 -c-1 dist/browser"
   },
   "private": true,
   "dependencies": {
@@ -17,6 +18,7 @@
     "@angular/platform-browser": "^18.2.9",
     "@angular/platform-browser-dynamic": "^18.2.9",
     "@angular/router": "^18.2.9",
+    "@angular/service-worker": "^18.2.9",
     "ngx-mask": "^18.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
