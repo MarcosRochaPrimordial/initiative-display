@@ -31,7 +31,7 @@
   <div class="flex column justify-space-between gap-20">
     <app-bonus-initiative-input [player]="player"></app-bonus-initiative-input>
     <mat-divider></mat-divider>
-    <div class="flex column gap-5">
+    <div class="flex column gap-5 mbottom-30">
       <span>Roll</span>
       <button mat-flat-button class="w-100" color="primary" (click)="rollInitiative(indexPlayer)"
         [disabled]="player.initiative === 0 || !bottomSheetRef">Roll self</button>

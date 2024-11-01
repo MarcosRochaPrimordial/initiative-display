@@ -4,7 +4,8 @@
   "scripts": {
     "start": "ng serve",
     "build": "ng build --configuration production",
-    "lan": "npm run build && npx http-server -p 4200 -c-1 dist/browser"
+    "lan": "npm run build && npx http-server -p 4200 -c-1 dist/browser",
+    "deploy": "npm run build && npx firebase deploy"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +30,7 @@
     "@angular/cli": "^18.2.10",
     "@angular/compiler-cli": "^18.2.9",
     "@types/jasmine": "~5.1.0",
+    "firebase-tools": "^13.23.1",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

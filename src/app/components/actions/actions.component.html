@@ -3,7 +3,7 @@
 	<app-text-button [buttonType]="playerService.firstRoll() ? 'flat' : 'stroked'" color="primary" class="w-100"
 		(clickFunction)="rollDices()" text="Roll Initiative"></app-text-button>
 	<app-text-button [buttonType]="playerService.firstRoll() ? 'stroked' : 'flat'" color="primary" class="w-100"
-		(clickFunction)="nextPlayer()" text="Next Subject"></app-text-button>
+		(clickFunction)="nextPlayer(); $event.preventDefault()" text="Next Subject"></app-text-button>
 	}
 	@if (playerService.deleteModeOn()) {
 	<app-text-button buttonType="stroked" color="primary" class="w-100" (clickFunction)="removeSelectedPlayers()"
